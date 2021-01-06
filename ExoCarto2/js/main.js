@@ -10,9 +10,9 @@ function init() {
 
 function successGeo(pos) {
     var geo1 = pos.coords;
-    var long = geo1.coords.longitude;
-    var lat = geo1.coords.latitude;
-    var prec = geo1.coords.accuracy;
+    var long = geo1.longitude;
+    var lat = geo1.latitude;
+    var prec = geo1.accuracy;
 
     var longDiv = document.getElementById("long");
     var longView = document.createElement("p");
