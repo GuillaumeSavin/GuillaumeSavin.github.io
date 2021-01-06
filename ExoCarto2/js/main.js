@@ -1,5 +1,11 @@
+var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
+
 function init() {
-    var geo1 = navigator.geolocation.getCurrentPosition(successGeo(), errorGeo() ());
+    var geo1 = navigator.geolocation.getCurrentPosition(successGeo(), errorGeo(), options);
 }
 
 function successGeo(pos) {
