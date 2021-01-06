@@ -14,6 +14,7 @@ function successGeo(pos) {
     var lat = geo1.latitude;
     var prec = geo1.accuracy;
     var vit = geo1.speed;
+    var time = pos.timestamp;
 
     var longDiv = document.getElementById("long");
     var longView = document.createElement("p");
@@ -34,6 +35,11 @@ function successGeo(pos) {
     var vitView = document.createElement("p");
     vitView.innerHTML = vit;
     vitDiv.appendChild(vitView);
+
+    var timeDiv = document.getElementById("time");
+    var timeView = document.createElement("p");
+    timeView.innerHTML = time;
+    timeDiv.appendChild(timeView);
 
 }
 
