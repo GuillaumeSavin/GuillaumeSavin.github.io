@@ -40,16 +40,16 @@ function successGeo(pos) {
 function errorGeo(err) {
     var longDiv = document.getElementById("long");
     var longView = document.createElement("p");
-    longView.innerHTML = 'ERREUR (${err.code}): ${err.message}';
+    longView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
     longDiv.appendChild(longView);
 
     var latDiv = document.getElementById("lat");
     var latView = document.createElement("p");
-    latView.innerHTML = 'ERREUR (${err.code}): ${err.message}';;
+    latView.innerHTML = `ERREUR (${err.code}): ${err.message}`;;
     latDiv.appendChild(latView);
 
     var precDiv = document.getElementById("prec");
     var precView = document.createElement("p");
-    precView.innerHTML = 'ERREUR (${err.code}): ${err.message}';;
+    precView.innerHTML = `ERREUR (${err.code}): ${err.message}`;;
     precDiv.appendChild(precView);
 }
