@@ -5,7 +5,7 @@ var options = {
 };
 
 function init() {
-    var geo1 = navigator.geolocation.getCurrentPosition(successGeo(), errorGeo(), options);
+    var geo1 = navigator.geolocation.getCurrentPosition(successGeo, errorGeo, options);
 }
 
 function successGeo(pos) {
