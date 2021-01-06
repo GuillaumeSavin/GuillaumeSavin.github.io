@@ -13,6 +13,7 @@ function successGeo(pos) {
     var long = geo1.longitude;
     var lat = geo1.latitude;
     var prec = geo1.accuracy;
+    var vit = geo1.speed;
 
     var longDiv = document.getElementById("long");
     var longView = document.createElement("p");
@@ -28,6 +29,11 @@ function successGeo(pos) {
     var precView = document.createElement("p");
     precView.innerHTML = prec;
     precDiv.appendChild(precView);
+
+    var vitDiv = document.getElementById("vitesse");
+    var vitView = document.createElement("p");
+    vitView.innerHTML = vit;
+    vitDiv.appendChild(vitView);
 
 }
 
