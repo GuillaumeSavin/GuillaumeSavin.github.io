@@ -1,5 +1,5 @@
 function init() {
-    var geo1 = navigator.geolocation.getCurrentPosition();
+    var geo1 = navigator.geolocation.getCurrentPosition(undefined, undefined, undefined);
     var long = geo1.coords.longitude;
     var lat = geo1.coords.latitude;
     var prec = geo1.coords.accuracy;
