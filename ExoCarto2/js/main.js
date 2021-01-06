@@ -45,11 +45,11 @@ function errorGeo(err) {
 
     var latDiv = document.getElementById("lat");
     var latView = document.createElement("p");
-    latView.innerHTML = `ERREUR (${err.code}): ${err.message}`;;
+    latView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
     latDiv.appendChild(latView);
 
     var precDiv = document.getElementById("prec");
     var precView = document.createElement("p");
-    precView.innerHTML = `ERREUR (${err.code}): ${err.message}`;;
+    precView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
     precDiv.appendChild(precView);
 }
