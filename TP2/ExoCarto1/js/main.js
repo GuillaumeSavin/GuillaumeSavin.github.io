@@ -30,5 +30,7 @@ function errorGeo(err) {
 }
 
 function generateMap(coords) {
+    console.log("before map");
     var mymap = L.map('mapid').setView([coords.longitude, coords.latitude], 13);
+    console.log("after map");
 }
