@@ -16,46 +16,26 @@ function successGeo(pos) {
     var vit = geo1.speed;
     var time = pos.timestamp;
 
-    var longDiv = document.getElementById("long");
-    var longView = document.createElement("p");
-    longView.innerHTML = long;
-    longDiv.appendChild(longView);
+    console.log("lat = " + lat);
+    console.log("long = " + long);
+    console.log("prec = " + prec);
+    console.log("vit = " + vit);
+    console.log("time = " + time);
 
-    var latDiv = document.getElementById("lat");
-    var latView = document.createElement("p");
-    latView.innerHTML = lat;
-    latDiv.appendChild(latView);
-
-    var precDiv = document.getElementById("prec");
-    var precView = document.createElement("p");
-    precView.innerHTML = prec;
-    precDiv.appendChild(precView);
-
-    var vitDiv = document.getElementById("vitesse");
-    var vitView = document.createElement("p");
-    vitView.innerHTML = vit;
-    vitDiv.appendChild(vitView);
-
-    var timeDiv = document.getElementById("time");
-    var timeView = document.createElement("p");
-    timeView.innerHTML = time;
-    timeDiv.appendChild(timeView);
-
+    generateMap(geo1);
 }
 
 function errorGeo(err) {
-    var longDiv = document.getElementById("long");
-    var longView = document.createElement("p");
-    longView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
-    longDiv.appendChild(longView);
+    console.log(`ERREUR (${err.code}): ${err.message}`);
+}
 
-    var latDiv = document.getElementById("lat");
-    var latView = document.createElement("p");
-    latView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
-    latDiv.appendChild(latView);
-
-    var precDiv = document.getElementById("prec");
-    var precView = document.createElement("p");
-    precView.innerHTML = `ERREUR (${err.code}): ${err.message}`;
-    precDiv.appendChild(precView);
+function generateMap(coords) {
+    console.log("before map");
+    var mymap = L.map('mapid').setView([coords.latitude, coords.longitude], 13);
+    console.log("after map");
+    var marker = L.marker([43.71, 7.26]).addTo(mymap);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+    }).addTo(mymap);
 }

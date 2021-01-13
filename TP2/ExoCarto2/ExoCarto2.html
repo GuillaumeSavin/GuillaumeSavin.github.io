@@ -3,24 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>TP2 - ExoCarto2</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body onload="init()">
     <script type="text/javascript" src="js/main.js"></script>
-    <div id="long">
-        <h1>Position Longitude</h1>
-    </div>
-    <div id="lat">
-        <h1>Position Latitude</h1>
-    </div>
-    <div id="prec">
-        <h1>Précision de la mesure</h1>
-    </div>
-    <div id="vitesse">
-        <h1>Vitesse</h1>
-    </div>
-    <div id="time">
-        <h1>Time Stamp</h1>
-    </div>
+    <div id="mapid"></div>
+    <p id="dist"></p>
 </body>
 </html>
