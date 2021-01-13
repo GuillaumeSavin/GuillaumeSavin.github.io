@@ -33,4 +33,5 @@ function generateMap(coords) {
     console.log("before map");
     var mymap = L.map('mapid').setView([coords.latitude, coords.longitude], 13);
     console.log("after map");
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'), { maxZoom: 19, attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'}).addTo(mymap);
 }
