@@ -21,8 +21,14 @@ function successGeo(pos) {
     console.log("prec = " + prec);
     console.log("vit = " + vit);
     console.log("time = " + time);
+
+    generateMap(geo1);
 }
 
 function errorGeo(err) {
     console.log(`ERREUR (${err.code}): ${err.message}`);
+}
+
+function generateMap(coords) {
+    var mymap = L.map('mapid').setView([coords.longitude, coords.latitude], 13);
 }
