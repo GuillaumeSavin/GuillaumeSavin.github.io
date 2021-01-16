@@ -31,11 +31,28 @@ function errorGeo(err) {
 
 function generateMap(coords) {
     console.log("before map");
-    var mymap = L.map('mapid').setView([coords.latitude, coords.longitude], 13);
+    var mymap = L.map('mapid').setView([coords.latitude, coords.longitude], 3);
     console.log("after map");
-    var marker = L.marker([43.71, 7.26]).addTo(mymap);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var marker = L.marker([43.3, 5.4]).addTo(mymap);
+    var polygon = L.polygon([
+        [25.76, -80.19],
+        [18.38, -67.19],
+        [32.30, -64.79]
+    ], { color: 'red' }).addTo(mymap);
+    var circle = L.circle([coords.latitude, coords.longitude], { radius: coords.accuracy}).addTo(mymap);
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
+    var a = 2 * 6371 * 1000;
+    var b = Math.pow(Math.sin((coords.latitude - 43.3) / 2), 2);
+    var c = Math.pow(Math.sin((coords.longitude - 5.4) / 2),2);
+    var d = Math.cos(43.3) * Math.cos(coords.latitude) * c;
+    var e = Math.sqrt(b + d);
+    var final = a * Math.asin(e);
+    var distMarseille = (final / 1000).toFixed(1) + " km";
+    console.log(distMarseille);
+
+    var pDist = document.getElementById("dist");
+    pDist.innerHTML = "La distance entre votre position et Marseille est de : " + distMarseille;
 }
