@@ -45,9 +45,9 @@ function generateMap(coords) {
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
     var a = 2 * 6371 * 1000;
-    var b = Math.pow(Math.sin((43.3 - coords.latitude) / 2), 2);
-    var c = Math.pow(Math.sin((5.4 - coords.longitude) / 2),2);
-    var d = Math.cos(coords.latitude) * Math.cos(43.3) * c;
+    var b = Math.pow(Math.sin((coords.latitude - 43.3) / 2), 2);
+    var c = Math.pow(Math.sin((coords.longitude - 5.4) / 2),2);
+    var d = Math.cos(43.3) * Math.cos(coords.latitude) * c;
     var e = Math.sqrt(b + d);
     var final = a * Math.asin(e);
     var distMarseille = (final / 1000).toFixed(1) + " km";
