@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body onload="initCanvas()">
+    <script>
+        function initCanvas() {
+
+            var zoneCanvas = document.createElement("canvas");
+            var ctx = zoneCanvas.getContext("2d");
+            var img = document.createElement("img");
+
+            zoneCanvas.height="800";
+            zoneCanvas.width="1280";
+            document.body.appendChild(zoneCanvas);
+            img.src = 'img/mountain-sunset.jpg'
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+                ctx.lineWidth = 10;
+                ctx.strokeStyle = '#b86f31';
+                ctx.rect(100,  zoneCanvas.height - 200, 250,  175);
+                ctx.stroke();
+                ctx.fillStyle = '#f69647';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.rect(130, zoneCanvas.height - 180, 80, 155);
+                ctx.strokeStyle = '#90382b';
+                ctx.stroke();
+                ctx.fillStyle = '#bf504e';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(95, zoneCanvas.height - 205);
+                ctx.lineTo(220, zoneCanvas.height - 330);
+                ctx.lineTo(345, zoneCanvas.height - 205);
+                ctx.lineTo(95, zoneCanvas.height - 205);
+                ctx.strokeStyle = '#da1c2b';
+                ctx.stroke();
+                ctx.fillStyle = '#ff0000';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.arc(700, 200,75 ,0, 2 * Math.PI);
+                ctx.fillStyle = '#ffff01';
+                ctx.fill();
+            }
+        }
+
+    </script>
+
+</body>
+</html>
