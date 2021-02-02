@@ -43,18 +43,35 @@ const light = new THREE.PointLight( 0xffffff, 15, 100 );
 light.position.set( 50, 50, 50 );
 scene.add(light);
 
+var orientation = {
+    x: 0,
+    y: 0
+};
+
+var motion = {
+    x: 0,
+    y: 0
+};
+
 window.addEventListener("deviceorientation", function (event) {
-    cube.rotation.x = event.gamma;
-    cube.rotation.y = event.beta;
+    orientation.x = event.gamma;
+    orientation.y = event.beta;
+});
+
+window.addEventListener("devicemotion", function (event) {
+    motion.x = event.accelerationIncludingGravity.x;
+    motion.y = event.accelerationIncludingGravity.y;
 })
+
 
 //var myObject = scene.children[2];
 console.log(loader);
 var render = function () {
     requestAnimationFrame(render);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    model.rotation.y += 0.01;
+    cube.rotation.x = orientation.x;
+    cube.rotation.y = orientation.y;
+    model.rotation.x += motion.x;
+    model.rotation.y += motion.y;
     renderer.render(scene, camera);
 }
 
