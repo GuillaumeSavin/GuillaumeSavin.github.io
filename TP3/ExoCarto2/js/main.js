@@ -61,8 +61,8 @@ window.addEventListener("deviceorientation", function (event) {
 window.addEventListener("devicemotion", function (event) {
     motion.x = event.accelerationIncludingGravity.x;
     motion.y = event.accelerationIncludingGravity.y;
-    model.rotation.x += motion.x;
-    model.rotation.y += model.y
+    model.rotation.x += motion.x / 100;
+    model.rotation.y += model.y / 100;
 })
 
 
