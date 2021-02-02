@@ -61,6 +61,8 @@ window.addEventListener("deviceorientation", function (event) {
 window.addEventListener("devicemotion", function (event) {
     motion.x = event.accelerationIncludingGravity.x;
     motion.y = event.accelerationIncludingGravity.y;
+    model.rotation.x += motion.x;
+    model.rotation.y += model.y
 })
 
 
@@ -70,8 +72,6 @@ var render = function () {
     requestAnimationFrame(render);
     cube.rotation.x = orientation.x;
     cube.rotation.y = orientation.y;
-    model.rotation.x += motion.x;
-    model.rotation.y += motion.y;
     renderer.render(scene, camera);
 }
 
