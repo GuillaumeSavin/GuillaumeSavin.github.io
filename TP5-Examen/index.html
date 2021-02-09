@@ -5,10 +5,16 @@
         <title>Boussole</title>
     </head>
     <body>
-    <div id="Canvas">
-
+    <div id="Canvas"></div>
+    <div id="SVGContainer">
+        <svg height="500" width="500" id="SVG"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <image x="0" y="0" height="500" width="500"  xlink:href="img/compass.svg" />
+            <image x="0" y="0" height="500" width="500" xlink:href="img/arrow.svg" />
+        </svg>
     </div>
     <script>
+        //Partie Canvas
         var divCanvas = document.getElementById("Canvas");
         var zoneCanvas = document.createElement("canvas");
         var ctx = zoneCanvas.getContext("2d");
@@ -28,7 +34,13 @@
             }
         }
 
+        //Partie SVG
+        var SVG = document.getElementById("SVG");
+        var divSVG = document.getElementById("SVGContainer");
+        var aiguille = SVG.children[1];
+
         window.addEventListener('deviceorientation', function (event) {
+            //Partie Canvas
             console.log("change detected");
             var angle = event.alpha;
             var rad = angle * (Math.PI / 180);
@@ -40,7 +52,14 @@
             ctx.translate(- zoneCanvas.width / 2, - zoneCanvas.height / 2);
             ctx.drawImage(imgA, 0, 0);
             ctx.restore();
-            ctx.transform();
+
+            //Partie SVG
+            divSVG.removeChild(SVG);
+            aiguille.setAttribute("transform", "rotate(" + angle + " 250 250)");
+            SVG.children[1] = aiguille;
+            divSVG.appendChild(SVG);
+
+
         });
     </script>
     </body>
