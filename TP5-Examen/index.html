@@ -67,12 +67,14 @@
         const controls = new THREE.OrbitControls( camera, renderer.domElement );
 
         const loader = new THREE.GLTFLoader();
-        var modelB
+        var modelB = { rotation: { x: 0, y: 0}};
         loader.load(
-            'models/sceneB.gltf',
+            'models/sceneC.gltf',
             function (gltf) {
                 modelB = gltf.scene;
+                modelB.rotation.x = 1.5;
                 scene.add(gltf.scene);
+                console.log(modelB);
             },
             function (xhr) {
                 console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -82,16 +84,12 @@
             }
         )
 
-        console.log(modelB);
 
-        const light = new THREE.PointLight( 0xffffff, 15, 100 );
+
+        //const light = new THREE.PointLight( 0xffffff, 15, 100 );
+        const light = new THREE.AmbientLight(0xffffff, 50);
         light.position.set( 50, 50, 50 );
         scene.add(light);
-
-        var orientation = {
-            x: 0,
-            y: 0
-        };
 
         var render = function () {
             requestAnimationFrame(render);
@@ -123,9 +121,9 @@
             divSVG.appendChild(SVG);
 
             //Partie Three
+            modelB.rotation.y = - event.alpha *0.017;
 
-            orientation.x = event.gamma;
-            orientation.y = event.beta;
+
 
 
         });
